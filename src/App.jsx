@@ -4,7 +4,6 @@ import { store } from './store/store';
 import GamesList from './components/GamesList'
 import Header from './components/Header'
 
-
 function App() {
   return (
     <>
