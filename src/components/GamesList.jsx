@@ -45,10 +45,15 @@ function GamesList() {
   return (
     <div className='container'>
       <div className='row justify-content-center gap-3 mb-3'>
-        {visibleGames.map((game) => (<GameCard key={game.id} {...game} />))}
+        {
+        !isLoading ? visibleGames.map((game) => (<GameCard key={game.id} {...game} />)) 
+        :
+        Array.from({ length: 21 }, (_, index) => (
+          <GameCard key={index} />
+        ))
+        }
       </div>
-      <div className='d-flex justify-content-center align-items-center'>
-        {isLoading && <strong>Cargando...</strong>}
+      <div className='d-flex flex-column justify-content-center align-items-center'>
         {!isLoading && <button className='btn btn-secondary mb-3' onClick={fetchNextPage}>Cargar más</button>}
       </div>
     </div>
