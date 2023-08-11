@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { API_KEY, BASE_URL, config } from '../utils/utils'
 import { useMemo  } from 'react'
 import GameCard from '../components/GameCard'
 import { useInfiniteQuery } from '@tanstack/react-query';
+import GameDetail from './GameDetail'
 
 const fetchGames = async ({ pageParam }) => {
   try {
@@ -31,7 +32,6 @@ const fetchGames = async ({ pageParam }) => {
 }
 
 function GamesList() {
-
   const { isLoading, isError, data, fetchNextPage } = useInfiniteQuery(
     ['games'],
     fetchGames,
@@ -40,16 +40,19 @@ function GamesList() {
     }
   )
 
+  const [modalState, setModalState] = useState(false)
+
   const visibleGames = useMemo(() => data ? data.pages.flatMap((page) => page.games) : [], [data])
 
   return (
     <div className='container'>
+      <GameDetail setModalState={setModalState} modalState={modalState} />
       <div className='row justify-content-center gap-3 mb-3'>
         {
-        !isLoading ? visibleGames.map((game) => (<GameCard key={game.id} {...game} />)) 
+        !isLoading ? visibleGames.map((game) => (<GameCard key={game.id} {...game} setModalState={setModalState} />)) 
         :
         Array.from({ length: 21 }, (_, index) => (
-          <GameCard key={index} />
+          <GameCard key={index} setModalState={setModalState}/>
         ))
         }
       </div>

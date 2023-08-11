@@ -2,7 +2,10 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <h1>Sitio creado por Agustin Martinez</h1>
+    <div className='container text-center'>
+      <h1>Sitio creado por Agustin Martinez</h1>
+    </div>
+    
   )
 }
 
