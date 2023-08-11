@@ -1,9 +1,25 @@
 article {
-  background-color: #FCFCFC;
+  background-color: #2C2C2C;
   border-radius: 1rem;
   box-shadow: 8px 10px 25px -11px rgba(0,0,0,0.75);
 }
 
 img {
   border-radius: 1rem;
+}
+
+article {
+  transition: transform 0.1s ease-in-out;
+}
+
+article:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.skeletonGameCard{
+  height: 24vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
