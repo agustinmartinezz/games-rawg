@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import axios from 'axios';
+import { API_KEY, BASE_URL, config } from '../utils/utils'
 import Modal from 'react-modal';
+import '../styles/GameDetail.css'
 
 const customStyles = {
   content: {
@@ -11,34 +14,72 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     height: '50vh',
     width: '40vw',
-    boxShadow: '6px 7px 38px 10px rgba(0,0,0,0.5)'
+    borderRadius:'1rem',
+    padding: '0px'
   },
 };
 
-const GameDetail = ({ gameId, modalState, setModalState }) => {
+const GameDetail = ({ modalState, setModalState }) => {
+  const [gameDetail, setGameDetail] = useState({})
+
   function afterOpenModal() {
-    if(modalState){
+    if (modalState.state) {
       document.body.style.overflow = 'hidden';
-    } 
+
+      getGameDetail(modalState.gameId)
+    }
   }
 
   function closeModal() {
     document.body.style.overflow = 'unset';
-    setModalState(false);
+
+    const newState = {
+      state: false,
+    }
+
+    setGameDetail({})
+    setModalState(newState);
   }
   
   Modal.setAppElement('#root');
 
+  const getGameDetail = async (gameId) => {
+    try {
+      const res = await axios.get(BASE_URL + 'games/' + gameId,{
+        params:{
+          key: API_KEY,
+        },
+        config : config
+      })
+
+      setGameDetail(res.data)
+    } catch (error) {
+      console.log("Error obteniendo detalles del juego.")
+    }
+  }
+
   return (
     <div>
       <Modal
-        isOpen={modalState}
+        isOpen={modalState.state}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Game Details"
       >
-
+        <div className='modalContent'>
+          <section  style={{
+            backgroundImage: `url(${modalState.background_image})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            opacity: '0.2',
+            width:'100%',
+            height:'100%'}} >
+              <p>{gameDetail.description_raw}</p>
+              
+          </section>
+        </div>
       </Modal>
     </div>
   )

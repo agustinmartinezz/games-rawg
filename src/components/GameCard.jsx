@@ -4,9 +4,16 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import StarRating from './StarRating'
 
-const GameCard = ({ background_image, name, rating, released, setModalState }) => {
+const GameCard = ({ id, name, background_image, rating, released, setModalState }) => {
 
-  const toggleModal = () => {setModalState(true)}
+  const toggleModal = () => {
+    const modalState = {
+      state: true,
+      gameId: id,
+      background_image: background_image
+    }
+    setModalState(modalState)
+  }
 
   return (
     <article className='col-3 p-0 text-center text-light' onClick={toggleModal}>
