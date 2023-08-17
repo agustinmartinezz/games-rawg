@@ -1,5 +1,22 @@
-.modalContent{
+.modalBackground {
+  position: absolute;
   height: 100%;
   width: 100%;
   background-color: #2C2C2C;
+}
+
+.modalContent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.modalContent a:hover {
+  color: beige !important;
+}
+
+.detailSection {
+  height: 10vh;
+  border-radius: 1rem;
+  border: 1px solid #ededed;
 }
