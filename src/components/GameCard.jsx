@@ -4,11 +4,19 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import StarRating from './StarRating'
 
-const prueba = () => {console.log("PRUEBA")}
+const GameCard = ({ id, name, background_image, rating, released, setModalState }) => {
 
-const GameCard = ({ background_image, name, rating, released }) => {
+  const toggleModal = () => {
+    const modalState = {
+      state: true,
+      gameId: id,
+      background_image: background_image
+    }
+    setModalState(modalState)
+  }
+
   return (
-    <article className='col-3 p-0 text-center text-light' onClick={prueba}>
+    <article className='col-3 p-0 text-center text-light' onClick={toggleModal}>
       {name ?
         <>
           <div className='ratio ratio-16x9'>
