@@ -130,13 +130,13 @@ const GameDetail = ({ modalState, setModalState }) => {
                 <div className='col-5'>
                   <strong className='text-light mb-0'>Platforms</strong>
                   <div className='detailSection text-light'>
-                    {platform}
+                    <p className='px-2'>{platform}</p>
                   </div>
                 </div>
                 <div className='col-5'>
                   <strong className='text-light mb-0'>Genre</strong>
                   <div className='detailSection text-light'>
-                    {genre}
+                    <p className='px-2'>{genre}</p>
                   </div>
                 </div>
               </div>
@@ -144,13 +144,13 @@ const GameDetail = ({ modalState, setModalState }) => {
                 <div className='col-5'>
                   <strong className='text-light mb-0'>Developer</strong>
                   <div className='detailSection text-light'>
-                    {developer}
+                    <p className='px-2'>{developer}</p>
                   </div>
                 </div>
                 <div className='col-5'>
                   <strong className='text-light mb-0'>Publisher</strong>
                   <div className='detailSection text-light'>
-                    {publisher}
+                    <p className='px-2'>{publisher}</p>
                   </div>
                 </div>
               </div>

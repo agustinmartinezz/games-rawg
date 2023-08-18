@@ -12,13 +12,11 @@ function App() {
     <>
       <Provider store={store}>
         <SkeletonTheme baseColor="#5A5A5A" highlightColor="#777777">
-          
           <BrowserRouter  basename="/">
-            <Navigation />
-            <Routes>
-              <Route path="/" element={<Home />}/>
-              <Route path="/games" element={<GamesList />}/>
-            </Routes>
+              <Routes>
+                <Route path="/" element={<Home />}/>
+                <Route path="/games" element={<GamesList />}/>
+              </Routes>
           </BrowserRouter>
         </SkeletonTheme>
       </Provider>
