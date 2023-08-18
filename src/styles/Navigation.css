@@ -1,0 +1,24 @@
+.navbar {
+  background-color: #181818;
+}
+
+li {
+  border-radius: 12px;
+  border: 2px solid #858585;
+  transition: transform 0.1s ease-in-out;
+  margin-left: 1rem;
+}
+
+li:hover {
+  background-color: #3F3F3F;
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+a {
+  color: #E3E3E3 !important;
+}
+
+a:hover {
+  color: #E3E3E3 !important;
+}

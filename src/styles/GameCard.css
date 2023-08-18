@@ -1,5 +1,5 @@
 article {
-  background-color: #2C2C2C;
+  background-color: #222222;
   border-radius: 1rem;
   box-shadow: 8px 10px 25px -11px rgba(0,0,0,0.75);
 }
@@ -18,7 +18,7 @@ article:hover {
 }
 
 .skeletonGameCard{
-  height: 24vh;
+  height: 16rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
