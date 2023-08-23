@@ -7,18 +7,21 @@ import Footer from '../components/Footer'
 import GameCard from '../components/GameCard'
 import { useInfiniteQuery } from '@tanstack/react-query';
 import GameDetail from './GameDetail'
+import SearchBar from './SearchBar'
 
-const fetchGames = async ({ pageParam }) => {
+const fetchGames = async ({ searchParam, pageParam }) => {
   try {
     let res = ""
 
     if (pageParam) {
+      console.log(pageParam)
       res = await axios.get(pageParam,{ config })
     } else {
       res = await axios.get(BASE_URL + 'games',{
         params:{
           key: API_KEY,
-          page_size: 21
+          page_size: 21,
+          search: searchParam,
         },
         config : config
       })
@@ -34,11 +37,13 @@ const fetchGames = async ({ pageParam }) => {
 }
 
 function GamesList() {
-  const { isLoading, isError, data, fetchNextPage } = useInfiniteQuery(
+  const [searchParam, setSearchParam] = useState('')
+
+  const { isLoading, isError, data, fetchNextPage, refetch } = useInfiniteQuery(
     ['games'],
-    fetchGames,
+    ({ pageParam }) => fetchGames({ searchParam, pageParam }),
     {
-      getNextPageParam: (lastPage, pages) => lastPage.nextFetch
+      getNextPageParam: (lastPage, pages) => lastPage.nextFetch,
     }
   )
 
@@ -46,9 +51,14 @@ function GamesList() {
 
   const visibleGames = useMemo(() => data ? data.pages.flatMap((page) => page.games) : [], [data])
 
+  useEffect(() => {
+    refetch();
+  }, [searchParam]);
+
   return (
     <>
       <Navigation />
+      <SearchBar setSearchParam={setSearchParam} />
       <div className='container mt-3'>
         <GameDetail setModalState={setModalState} modalState={modalState} />
         <div className='row justify-content-center gap-3 mb-3'>
