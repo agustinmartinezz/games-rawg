@@ -14,7 +14,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     height: '50vh',
-    width: '40vw',
+    // width: '',
     borderRadius:'1rem',
     padding: '0px'
   },
@@ -102,6 +102,7 @@ const GameDetail = ({ modalState, setModalState }) => {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Game Details"
+        id='modalContainer'
       >
         <div className='modalBackground'>
           <section style={{

@@ -16,7 +16,7 @@ const GameCard = ({ id, name, background_image, rating, released, setModalState 
   }
 
   return (
-    <article className='col-3 p-0 text-center text-light' onClick={toggleModal}>
+    <article className='col-10 col-md-5 col-lg-3 p-0 text-center text-light' onClick={toggleModal}>
       {name ?
         <>
           <div className='ratio ratio-16x9'>

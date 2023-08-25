@@ -10,11 +10,11 @@ const Navigation = () => {
             <a className="navbar-brand mt-2 mt-lg-0" href="/">
               Home
             </a>
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
+            <ul className="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+              <li className="nav-item p-1">
                 <a className="nav-link" href="/games">Games</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item p-1">
                 <a className="nav-link" href="https://rawg.io/" target='_blank'>RAWG</a>
               </li>
             </ul>
